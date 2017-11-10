@@ -1,0 +1,341 @@
+/* ----- Base Variables ---- */
+$max-width-value: 1440;
+$max-width: ($max-width-value / 16) + rem;
+$gutter-width: 10px;
+
+
+/* ----- Grid Breakpoints ----- */
+$breakpoint-max-s: (767 / 16) + em;
+$breakpoint-m: (768 / 16) + em;
+$breakpoint-max-m: (968 / 16) + em;
+$breakpoint-l: (969 / 16) + em;
+
+
+/* ----- Media Queries ----- */
+$mq-s-max: "(max-width: "$breakpoint-max-s")";
+$mq-m-min: "(min-width: "$breakpoint-m")";
+$mq-m-max: "(max-width: "$breakpoint-max-m")";
+$mq-l-min: "(min-width: "$breakpoint-l")";
+
+
+/* ----- Layout Size Variables ---- */
+$layout-size-1: 100% * 1 / 12;
+$layout-size-2: 100% * 2 / 12;
+$layout-size-3: 100% * 3 / 12;
+$layout-size-4: 100% * 4 / 12;
+$layout-size-5: 100% * 5 / 12;
+$layout-size-6: 100% * 6 / 12;
+$layout-size-c6: $max-width-value * 6 / 12 + px;
+$layout-size-7: 100% * 7 / 12;
+$layout-size-8: 100% * 8 / 12;
+$layout-size-c8: $max-width-value * 8 / 12 + px;
+$layout-size-9: 100% * 9 / 12;
+$layout-size-10: 100% * 10 / 12;
+$layout-size-c10: $max-width-value * 10 / 12 + px;
+$layout-size-11: 100% * 11 / 12;
+$layout-size-12: 100%;
+
+
+/* ----- Layout Class ----- */
+.layout {
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: $max-width;
+	padding-left: $gutter-width;
+	padding-right: $gutter-width;
+	width: 100%;
+	
+	/* Full-Width Modifier */
+	&--full-width {
+		max-width: none;
+		padding-left: 0;
+		padding-right: 0;
+		
+		.layout__block {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	/* Reverse Modifier */
+	&--reverse {
+		flex-direction: row-reverse;
+	}
+	
+	/* Nested */
+	.layout {
+		margin-left: -$gutter-width;
+		margin-right: -$gutter-width;
+		max-width: none;
+		padding-left: 0;
+		padding-right: 0;
+		width: auto;
+	}
+}
+
+/* ----- Layout Block ----- */
+.layout__block {
+	box-sizing: border-box;
+	flex-shrink: 0;
+	padding-left: $gutter-width;
+	padding-right: $gutter-width;
+	position: relative;
+	width: $layout-size-12;
+	
+	[data-size^="c-"] & {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+/* ----- Horizontal Alignment ---- */
+.u-align-left {
+	justify-content: flex-start;
+}
+.u-align-center {
+	justify-content: center;
+}
+.u-align-right {
+	justify-content: flex-end;
+}
+
+/* ----- Vertical Alignment ---- */
+.u-align-top {
+	align-items: flex-start;
+}
+.u-align-middle {
+	align-items: center;
+}
+.u-align-bottom {
+	align-items: flex-end;
+}
+
+/* ----- Horizontal Spacing ---- */
+.u-align-around {
+	justify-content: space-around;
+}
+.u-align-between {
+	justify-content: space-between;
+}
+
+/* ----- Ordering ---- */
+.u-order-first {
+	order: -1;
+}
+.u-order-last {
+	order: 1;
+}
+
+
+/* ----- Auto Layout Size ----- */
+[data-size="auto"] {
+	flex-grow: 1;
+	max-width: 100%;
+	width: auto;
+}
+
+
+/* ----- Centered Sizes ----- */
+[data-size^="c-"] {
+	box-sizing: border-box;
+	margin-left: auto;
+	margin-right: auto;
+}
+[data-size="c-6"] {
+	max-width: $layout-size-c6;
+	padding: 0 $gutter-width;
+}
+[data-size="c-8"] {
+	max-width: $layout-size-c8;
+	padding: 0 $gutter-width;
+}
+[data-size="c-10"] {
+	max-width: $layout-size-c10;
+	padding: 0 $gutter-width;
+}
+
+
+/* ----- Up to Max Small Screen ----- */
+@media all and #{$mq-s-max} {
+	/* Offsets */
+	[data-offset*="s-half"]{
+		margin-left: $layout-size-6;	
+	}
+	
+	/* Sizes */
+	[data-size*="s-auto"] {
+		flex-grow: 1;
+		max-width: 100%;
+		width: auto;
+	}
+	[data-size*="s-half"] {
+		width: $layout-size-6;	
+	}
+}
+
+
+/* ----- Medium Screen ----- */
+@media all and #{$mq-m-min} and (max-width: #{$breakpoint-l}) {
+	/* Offsets */
+	[data-offset*="m-1"] {
+		margin-left: $layout-size-1;
+	}
+	[data-offset*="m-2"] {
+		margin-left: $layout-size-2;
+	}
+	[data-offset*="m-3"] {
+		margin-left: $layout-size-3;
+	}
+	[data-offset*="m-4"] {
+		margin-left: $layout-size-4;
+	}
+	[data-offset*="m-5"] {
+		margin-left: $layout-size-5;
+	}
+	[data-offset*="m-6"] {
+		margin-left: $layout-size-6;
+	}
+	[data-offset*="m-7"] {
+		margin-left: $layout-size-7;
+	}
+	[data-offset*="m-8"] {
+		margin-left: $layout-size-8;
+	}
+	[data-offset*="m-9"] {
+		margin-left: $layout-size-9;
+	}
+	[data-offset*="m-10"] {
+		margin-left: $layout-size-10;
+	}
+	[data-offset*="m-11"] {
+		margin-left: $layout-size-11;
+	}
+	
+	/* Sizes */
+	[data-size*="m-auto"] {
+		flex-grow: 1;
+		max-width: 100%;
+		width: auto;
+	}
+	[data-size*="m-1"] {
+		width: $layout-size-1;
+	}
+	[data-size*="m-2"] {
+		width: $layout-size-2;
+	}
+	[data-size*="m-3"] {
+		width: $layout-size-3;
+	}
+	[data-size*="m-4"] {
+		width: $layout-size-4;
+	}
+	[data-size*="m-5"] {
+		width: $layout-size-5;
+	}
+	[data-size*="m-6"] {
+		width: $layout-size-6;
+	}
+	[data-size*="m-7"] {
+		width: $layout-size-7;
+	}
+	[data-size*="m-8"] {
+		width: $layout-size-8;
+	}
+	[data-size*="m-9"] {
+		width: $layout-size-9;
+	}
+	[data-size*="m-10"] {
+		width: $layout-size-10;
+	}
+	[data-size*="m-11"] {
+		width: $layout-size-11;
+	}
+	[data-size*="m-12"] {
+		width: $layout-size-12;
+	}
+}	
+
+
+/* ----- Large Screen ----- */
+@media all and #{$mq-l-min} {
+	/* Offsets */
+	[data-offset*="l-1"] {
+		margin-left: $layout-size-1;
+	}
+	[data-offset*="l-2"] {
+		margin-left: $layout-size-2;
+	}
+	[data-offset*="l-3"] {
+		margin-left: $layout-size-3;
+	}
+	[data-offset*="l-4"] {
+		margin-left: $layout-size-4;
+	}
+	[data-offset*="l-5"] {
+		margin-left: $layout-size-5;
+	}
+	[data-offset*="l-6"] {
+		margin-left: $layout-size-6;
+	}
+	[data-offset*="l-7"] {
+		margin-left: $layout-size-7;
+	}
+	[data-offset*="l-8"] {
+		margin-left: $layout-size-8;
+	}
+	[data-offset*="l-9"] {
+		margin-left: $layout-size-9;
+	}
+	[data-offset*="l-10"] {
+		margin-left: $layout-size-10;
+	}
+	[data-offset*="l-11"] {
+		margin-left: $layout-size-11;
+	}
+	
+	/* Sizes */
+	[data-size*="l-auto"] {
+		flex-grow: 1;
+		max-width: 100%;
+		width: auto;
+	}
+	[data-size*="l-1"] {
+		width: $layout-size-1;
+	}
+	[data-size*="l-2"] {
+		width: $layout-size-2;
+	}
+	[data-size*="l-3"] {
+		width: $layout-size-3;
+	}
+	[data-size*="l-4"] {
+		width: $layout-size-4;
+	}
+	[data-size*="l-5"] {
+		width: $layout-size-5;
+	}
+	[data-size*="l-6"] {
+		width: $layout-size-6;
+	}
+	[data-size*="l-7"] {
+		width: $layout-size-7;
+	}
+	[data-size*="l-8"] {
+		width: $layout-size-8;
+	}
+	[data-size*="l-9"] {
+		width: $layout-size-9;
+	}
+	[data-size*="l-10"] {
+		width: $layout-size-10;
+	}
+	[data-size*="l-11"] {
+		width: $layout-size-11;
+	}
+	[data-size*="l-12"] {
+		width: $layout-size-12;
+	}
+}

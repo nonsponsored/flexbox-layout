@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+		<link type="text/css" rel="stylesheet" href="build/css/flexbox-layout.min.css"/>
+		
+		<style>
+			body {
+				font-family: sans-serif;
+				line-height: 1;
+				margin: 0;
+				padding-bottom: 4rem;
+			}
+			h2 {
+				border-bottom: 1px solid #666;
+				border-top: 1px solid #666;
+				box-sizing: border-box;
+				color: #555;
+				font-size: 1rem;
+				margin: 4rem auto 2rem;
+				max-width: 1440px;
+				padding: 1rem 20px;
+				text-transform: uppercase;
+				width: 100%;
+			}
+			h3 {
+				box-sizing: border-box;
+				color: #777;
+				margin: 0 auto;
+				max-width: 1440px;
+				padding: 1rem 20px;
+			}
+			.layout {
+				counter-reset: count;
+			}
+			.layout__block {
+				border-bottom: 1px solid #fff;
+				counter-increment: count;
+				min-height: 25px;
+			}
+			.layout__block::before {
+				color: #444;
+				content: counter(count);
+				display: block;
+				font-size: 14px;
+				padding-top: 4px;
+				text-align: center;
+			}	
+			.layout__block:nth-child(even) {
+				background-color: #ccc;
+			}
+			.layout__block:nth-child(odd) {
+				background-color: #ddd;
+			}
+			.u-align-bottom .layout__block:first-child,
+			.u-align-middle .layout__block:first-child,
+			.u-align-top .layout__block:first-child {
+				min-height: 75px;
+			}
+			.layout .layout {
+				counter-reset: nested-count;
+			}
+			.layout .layout .layout__block {
+				counter-increment: nested-count;
+				min-height: 50px;
+			}
+			.layout .layout .layout__block::before {
+				content: 'Nested A'counter(nested-count) ;
+			}
+			.layout .layout .layout {
+				counter-reset: nested-count2;
+			}
+			.layout .layout .layout .layout__block {
+				counter-increment: nested-count2;
+			}
+			.layout .layout .layout .layout__block::before {
+				content: 'Nested B'counter(nested-count2) ;
+			}
+		</style>
+		
+		<title>Flexbox Layout</title>
+	</head>
+	<body>
+		
+		<h2>Base</h2>
+		<div class="layout">
+			<div class="layout__block" data-size="m-6 l-1"></div>
+			<div class="layout__block" data-size="m-6 l-11"></div>
+
+			<div class="layout__block" data-size="m-6 l-2"></div>
+			<div class="layout__block" data-size="m-6 l-10"></div>
+
+			<div class="layout__block" data-size="m-6 l-3"></div>
+			<div class="layout__block" data-size="m-6 l-9"></div>
+
+			<div class="layout__block" data-size="m-6 l-4"></div>
+			<div class="layout__block" data-size="m-6 l-8"></div>
+
+			<div class="layout__block" data-size="m-6 l-5"></div>
+			<div class="layout__block" data-size="m-6 l-7"></div>
+
+			<div class="layout__block" data-size="m-6 l-6"></div>
+			<div class="layout__block" data-size="m-6 l-6"></div>
+			
+			<div class="layout__block"></div>
+		</div><!-- End .layout -->
+
+
+		<h2>Full-Width</h2>
+		<div class="layout layout--full-width">
+			<div class="layout__block"></div>
+			<div class="layout__block" data-size="m-3 l-1"></div>
+			<div class="layout__block" data-size="s-half m-6 l-10"></div>
+			<div class="layout__block" data-size="s-half m-3 l-1"></div>
+		</div><!-- End .layout -->
+		
+
+		<h2>Offsets</h2>
+		<div class="layout">
+			<div class="layout__block" data-offset="s-half m-11 l-1" data-size="s-half m-1 l-11"></div>
+			<div class="layout__block" data-offset="m-10 l-2" data-size="s-half m-2 l-10"></div>
+			<div class="layout__block" data-offset="s-half m-9 l-3" data-size="s-half m-3 l-9"></div>
+			<div class="layout__block" data-offset="m-8 l-4" data-size="s-half m-4 l-8"></div>
+			<div class="layout__block" data-offset="s-half m-7 l-5" data-size="s-half m-5 l-7"></div>
+			<div class="layout__block" data-offset="m-6 l-6" data-size="s-half m-6 l-6"></div>
+			<div class="layout__block" data-offset="s-half m-5 l-7" data-size="s-half m-7 l-5"></div>
+			<div class="layout__block" data-offset="m-4 l-8" data-size="s-half m-8 l-4"></div>
+			<div class="layout__block" data-offset="s-half m-3 l-9" data-size="s-half m-9 l-3"></div>
+			<div class="layout__block" data-offset="m-2 l-10" data-size="s-half m-10 l-2"></div>
+			<div class="layout__block" data-offset="s-half m-1 l-11" data-size="s-half m-11 l-1"></div>
+			<div class="layout__block" data-offset="m-1 l-11" data-size="s-half m-11 l-1"></div>
+			<div class="layout__block" data-offset="s-half m-2 l-10" data-size="s-half m-10 l-2"></div>
+			<div class="layout__block" data-offset="m-3 l-9" data-size="s-half m-9 l-3"></div>
+			<div class="layout__block" data-offset="s-half m-4 l-8" data-size="s-half m-8 l-4"></div>
+			<div class="layout__block" data-offset="m-5 l-7" data-size="s-half m-7 l-5"></div>
+			<div class="layout__block" data-offset="s-half m-6 l-6" data-size="s-half m-6 l-6"></div>
+			<div class="layout__block" data-offset="m-7 l-5" data-size="s-half m-5 l-7"></div>
+			<div class="layout__block" data-offset="s-half m-8 l-4" data-size="s-half m-4 l-8"></div>
+			<div class="layout__block" data-offset="m-9 l-3" data-size="s-half m-3 l-9"></div>
+			<div class="layout__block" data-offset="s-half m-10 l-2" data-size="s-half m-2 l-10"></div>
+			<div class="layout__block" data-offset="m-11 l-1" data-size="s-half m-1 l-11"></div>
+		</div><!-- End .layout -->
+
+
+		<h2>Auto Width</h2>
+		<div class="layout">
+			<div class="layout__block" data-size="auto"></div>
+			<div class="layout__block" data-size="auto"></div>
+		</div><!-- End .layout -->
+		
+		<div class="layout">
+			<div class="layout__block" data-size="auto"></div>
+			<div class="layout__block" data-size="m-6 l-6"></div>
+			<div class="layout__block" data-size="auto"></div>
+		</div><!-- End .layout -->
+		
+		<div class="layout">
+			<div class="layout__block" data-size="auto"></div>
+			<div class="layout__block" data-size="auto"></div>
+			<div class="layout__block" data-size="auto"></div>
+		</div><!-- End .layout -->
+
+
+		<h2>Nested Layout</h2>
+		<div class="layout">
+			<div class="layout__block">
+				
+				<div class="layout">
+					<div class="layout__block" data-size="m-9 l-9">
+						
+						<div class="layout">
+							<div class="layout__block" data-size="s-half m-4 l-4"></div>
+							<div class="layout__block" data-size="s-half m-8 l-8"></div>
+						</div><!-- End .layout -->
+						
+					</div>
+					<div class="layout__block" data-size="m-3 l-3">
+						
+						<div class="layout">
+							<div class="layout__block"></div>
+						</div><!-- End .layout -->
+						
+					</div>
+				</div><!-- End .layout -->
+				
+			</div>
+		</div><!-- End .layout -->
+
+		
+		<h2>Alignment : Horizontal : For Single Block Layouts Only</h2>
+		<h3><code>.u-align-left</code></h3>
+		<div class="layout u-align-left">
+			<div class="layout__block" data-size="m-6 l-6"></div>
+		</div><!-- End .layout -->
+		
+
+		<h3><code>.u-align-center</code></h3>
+		<div class="layout u-align-center">
+			<div class="layout__block" data-size="m-8 l-8"></div>
+		</div><!-- End .layout -->
+
+
+		<h3><code>.u-align-right</code></h3>
+		<div class="layout u-align-right">
+			<div class="layout__block" data-size="m-6 l-6"></div>
+		</div><!-- End .layout -->
+		
+		
+		<h2>Alignment : Centered Max-Width : For Multiple Block Layouts</h2>
+		<div class="layout">
+			<div class="layout__block" data-size="c-6"></div>
+			<div class="layout__block" data-size="c-8"></div>
+			<div class="layout__block" data-size="c-10"></div>
+		</div><!-- End .layout -->
+			
+		
+		<h2>Alignment : Vertical</h2>
+		<h3><code>.u-align-top</code></h3>
+		<div class="layout u-align-top">
+			<div class="layout__block" data-size="s-half m-6 l-6"></div>
+			<div class="layout__block" data-size="s-half m-6 l-6"></div>
+		</div><!-- End .layout -->
+
+
+		<h3><code>.u-align-middle</code></h3>
+		<div class="layout u-align-middle">
+			<div class="layout__block" data-size="s-half m-6 l-6"></div>
+			<div class="layout__block" data-size="s-half m-6 l-6"></div>
+		</div><!-- End .layout -->
+
+
+		<h3><code>.u-align-bottom</code></h3>
+		<div class="layout u-align-bottom">
+			<div class="layout__block" data-size="s-half m-6 l-6"></div>
+			<div class="layout__block" data-size="s-half m-6 l-6"></div>
+		</div><!-- End .layout -->
+
+
+		<h2>Distribution</h2>
+		<h3><code>.u-align-around</code></h3>
+		<div class="layout u-align-around">
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+		</div><!-- End .layout -->
+
+
+		<h3><code>.u-align-between</code></h3>					
+		<div class="layout u-align-between">
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+		</div><!-- End .layout -->
+
+
+		<h2>Reordering</h2>
+		<h3><code>.u-order-first</code></h3>					
+		<div class="layout">
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block u-order-first" data-size="m-2 l-2"></div>
+		</div><!-- End .layout -->
+				
+		
+		<h3><code>.u-order-last</code></h3>					
+		<div class="layout">
+			<div class="layout__block u-order-last" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+		</div><!-- End .layout -->
+
+
+		<h2>Reverse</h2>
+		<h3><code>.layout--reverse</code></h3>					
+		<div class="layout layout--reverse">
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+			<div class="layout__block" data-size="m-2 l-2"></div>
+		</div><!-- End .layout -->
+		
+	</body>	
+</html> 
