@@ -145,6 +145,10 @@ $layout-size-12: 100%;
 	margin-left: auto;
 	margin-right: auto;
 }
+[data-size="c-4"] {
+	max-width: $layout-size-c4;
+	padding: 0 $gutter-width;
+}
 [data-size="c-6"] {
 	max-width: $layout-size-c6;
 	padding: 0 $gutter-width;
